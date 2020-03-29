@@ -31,6 +31,7 @@ class App extends Component{
 ```
 
 #### React Components
+<span style="color: red">When import component, always use Upper letter to start, this will help react to reconnize</span>
 A conponent is just a function return JSX
 ```JSX
 import React from 'react';
@@ -268,4 +269,8 @@ const person = (props) => {
       };
     ```
  
-
+***
+Usefull links
+Introducing JSX: https://reactjs.org/docs/introducing-jsx.html  
+Rendering Elements: https://reactjs.org/docs/rendering-elements.html  
+Components & Props: https://reactjs.org/docs/components-and-props.html  
