@@ -241,7 +241,7 @@ const person = (props) => {
 - inline
     + the style scope will be restricted
     + but the CSS functionality will be limited(later we will learn how to go around this)
-    ```JAX
+    ```JSX
 
     render(){
 
