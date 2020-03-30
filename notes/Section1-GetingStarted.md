@@ -1,4 +1,6 @@
+
 #Section 1: Geting Started
+
 <a href="https://reactjs.org/" target="_blank">React Home page</a>  
 React: A Javascript Library for builging User Interfaces  
 React components can be thought of custom HTML elements  
