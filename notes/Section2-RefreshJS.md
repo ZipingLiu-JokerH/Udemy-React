@@ -1,4 +1,4 @@
-#Section2: Refreshing Next Generation JavaScript
+# Section2: Refreshing Next Generation JavaScript
 A PDF summary can be find in the folder
 
 - let & const

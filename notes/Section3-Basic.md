@@ -1,4 +1,4 @@
-#Section3: Understanding the Base Features & Syntax
+# Section3: Understanding the Base Features & Syntax
 
 ![section3-1 img](../markdownNotes-img/section3-1.png)
 
@@ -118,7 +118,7 @@ class App extends Component{
 };
 ```
 ***
-#####functional-based components: hooks
+##### functional-based components: hooks
 `useState` is the most important react hooks, allow us to manage state from a functional component. Takes in an object and returns an arry with exactly 2 elements. The 1st element will be the current state, 2nd element is a function that allows us to update the state.<span style="color: red">(!This one does not merge the two state objects. it replaces the old one.)</span>
 ```JSX
 import React, {useState} from 'react';
@@ -157,12 +157,12 @@ const App = props => {
 };
 ```
 ***
-####Stateless vs Stateful Components
+#### Stateless vs Stateful Components
 Stateless(dumb, presentational): no state management  
 Stateful(smart, cotainer): manage state
 ***
 
-####Passing Method References between Components
+#### Passing Method References between Components
 we can set a new property which cantains the reference of method, and the other components can access it by using the `props`. In the case we also want to handle arguments to the method, we need to use `bind`  
 
 App.js

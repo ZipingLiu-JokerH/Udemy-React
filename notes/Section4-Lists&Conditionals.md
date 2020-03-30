@@ -1,4 +1,4 @@
-#Section4: Working with Lists and Conditionals
+# Section4: Working with Lists and Conditionals
 
 #### Conditionaly showing element
 
@@ -72,7 +72,7 @@ if (this.state.showPersons){
 };
 ```
 
-#####change the list elements:  
+##### change the list elements:  
 notice the part `click={() =>this.deletePersonsHandler(index)}` we are using arrow function to return a reference of a function. The reason we did this is because we need arguments for this callback function.
 ```JSX
 deletePersonsHandler = index => {

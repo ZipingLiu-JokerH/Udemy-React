@@ -1,5 +1,5 @@
 
-#Section 1: Geting Started
+# Section 1: Geting Started
 
 <a href="https://reactjs.org/" target="_blank">React Home page</a>  
 React: A Javascript Library for builging User Interfaces  
