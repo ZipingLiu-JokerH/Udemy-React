@@ -17,7 +17,7 @@ Backdrop: 背景变暗
 when ever we want to use an assets during development, we always need to import it, not simply use the path on our machine. Since webpack will bundle all together later in production, the relative path will not working anymore. Bu importing the assets, we let webpack aware of it and it can handle that while bundling.
 
 Dynamically adjust size for same content displayed in different device and multiple places:  
-(see example in Git History)
+(see example in Git History: adding side draw VS)
 
 - one way of doing this is to use media query all over the place.
 - another way is to using props to dynamically passing the height or width and use CSS inline style to overwrite the previous styling.
