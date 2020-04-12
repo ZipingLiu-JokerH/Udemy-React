@@ -16,6 +16,9 @@
     .SideDrawer{
         display: none;
     }
+    .Backdrop{
+        display: none;
+    }
 }
 
 .Open{
