@@ -56,7 +56,7 @@ return <div className={props.cssClass}>{props.children}</div>
 
 export default withCssClass;
 ```
-Another way to write HOC is: instead of define a component we create a function which takes in the lower order component and return JSX code that wrap the component. Keep in mind, Always use a Component start with Capital Letter, all others use lower case letter to start.
+Another way to write HOC is: instead of define a component we create a function which takes in the lower order component and other arguments needed. Return a functional component or classed component that returns JSX code which wrap the origional component. Keep in mind, Always use a Component start with Capital Letter, all others use lower case letter to start.
 ```JSX
 import React from 'react';
 
