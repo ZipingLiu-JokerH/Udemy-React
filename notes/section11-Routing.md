@@ -1,5 +1,10 @@
 # Section11: Multi-page feeling in a single page App: Routing
 
+Few questions:
+
+- Can't perform a React state update on an unmounted component. - Memory Leak Error
+    + https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8140669#questions/9445409
+
 Note: Routing is not build in React. We will use another package to support routing. React is much more like a component creation Library, now we are turning it into something like framework by adding the routing feature.
 
 Routing is about being able to show different pages to the user. In a Single Page Application, we want to show the user different pages for different URLs. The trick is that we dont actually have multiple HTML file but we use javascript to render different pages for different path. So we dont really have different files but simply re-render parts of that single pages or maybe the entire page depending on which path the user navigated to in our application.
@@ -41,3 +46,41 @@ What if we want get access of these info for the subcompoents inside Posts, ie:P
 
 - we can simply pass it down or
 - using a HOC `withRouter` provided by react-router-dom to wrap `Posts`
+
+***
+What if we want to style the active link(ie: when we are on the new-post, the new-post link should be colored or something).  
+Using the `<Link>` will not work, instead we will use `<NavLink>` it is similer to `<Link>` but it added a class -- `class='active'` to the underlying `<a>` tage, hence we can use this class to stying the link.We can use another props to change this className, `activeClassName="my-active"` will set the active link class to my-active. `activeStyle = {{color:'red',textDecoration:'underline'}}` can be used to set the styling.   
+Note: the active class will also added to any path that start with the actual active link. Using exact to avoide this.
+
+***
+Setting Dynamic Route path(Route Parameter):  
+we will use `<Route paht="/:id"` the `:` tells the react Router that there is something dynamically added. Whenever use this, we need to be careful the sequence we render `<Route>`.  
+``` JSX
+<Route path="/" exact component={Posts} />
+<Route path="/:postId"  component={FullPost} />
+<Route path="/new-post"  component={NewPost} />
+```
+In this case, `/new-post` will be interfered, since whenever there is a `/` anything after it will treated as postId. Hence we need to re-arange the order of these `<Route>`
+``` JSX
+<Route path="/" exact component={Posts} />
+<Route path="/new-post"  component={NewPost} />
+<Route path="/:postId"  component={FullPost} />
+```
+<span style="color: red">??????????? still confused, in this case, if we route to new-post, A FullPost will also be shown.</span>
+
+Extracting Route Parameters: it's inside the `props.match.params`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
