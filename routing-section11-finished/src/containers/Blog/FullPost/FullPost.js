@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../../axios';
+import axios from 'axios';
 
 import './FullPost.css';
 
@@ -9,8 +9,17 @@ class FullPost extends Component {
     }
 
     componentDidMount () {
+        console.log(this.props);
+        this.loadData();
+    }
+
+    componentDidUpdate() {
+        this.loadData();
+    }
+
+    loadData () {
         if ( this.props.match.params.id ) {
-            if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.match.params.id) ) {
+            if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== +this.props.match.params.id) ) {
                 axios.get( '/posts/' + this.props.match.params.id )
                     .then( response => {
                         // console.log(response);
@@ -18,6 +27,13 @@ class FullPost extends Component {
                     } );
             }
         }
+    }
+
+    deletePostHandler = () => {
+        axios.delete('/posts/' + this.props.match.params.id)
+            .then(response => {
+                console.log(response);
+            });
     }
 
     render () {
@@ -31,7 +47,7 @@ class FullPost extends Component {
                     <h1>{this.state.loadedPost.title}</h1>
                     <p>{this.state.loadedPost.body}</p>
                     <div className="Edit">
-                        <button className="Delete">Delete</button>
+                        <button onClick={this.deletePostHandler} className="Delete">Delete</button>
                     </div>
                 </div>
 

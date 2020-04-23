@@ -32,7 +32,7 @@ class App extends Component{
 
 #### React Components
 <span style="color: red">When import component, always use Upper letter to start, this will help react to reconnize</span>
-A conponent is just a function return JSX
+A component is just a function return JSX
 ```JSX
 import React from 'react';
 const person = () => {
