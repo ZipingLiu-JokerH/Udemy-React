@@ -53,6 +53,8 @@ What if we want to style the active link(ie: when we are on the new-post, the ne
 Using the `<Link>` will not work, instead we will use `<NavLink>` it is similer to `<Link>` but it added a class -- `class='active'` to the underlying `<a>` tage, hence we can use this class to stying the link.We can use another props to change this className, `activeClassName="my-active"` will set the active link class to my-active. `activeStyle = {{color:'red',textDecoration:'underline'}}` can be used to set the styling.   
 Note: the active class will also added to any path that start with the actual active link. Using exact to avoide this.
 
+Note: if we using CSS modules, then the active class which is set by default will not work, due to the fact in our CSS file, the class name is hashed to something unique, not just active
+
 ***
 ### Setting Dynamic Route path(Route Parameter):  
 we will use `<Route paht="/:id"` the `:` tells the react Router that there is something dynamically added. Whenever use this, we need to be careful the sequence we render `<Route>`.  
