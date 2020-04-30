@@ -201,7 +201,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 #### Change State Immutably
 for array, we can use method that returns a new array(ie:concat,map, filter etc.) or spread operator to deep copy one.
 
-#####Immutable Update Patterns
+##### Immutable Update Patterns
 https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns/
 
 ***
