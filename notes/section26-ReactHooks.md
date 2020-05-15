@@ -2,6 +2,17 @@
 
 Come with React 16.8  
 
+Hook List
+
+- <a href='#usestate'>useState</a>
+- <a href='#useeffect'>useEffect</a>
+- <a href='#usecallback'>useCallback</a>
+- <a href='#useref'>useRef</a>
+- <a href='#usereducer'>useReducer</a>
+- <a href='#usecontext'>useContext</a>
+- <a href='#usememo'>useMemo</a>
+- <a href='#customhooks'>Custom Hook</a>
+
 No more class-based components. We use functional components with Hooks.  
 React Hooks: Javascript Functions which can only be used from inside Functional Components or other Hooks. ie:`useXYZ()`  
 Only used in the root level of functional components or inside other hooks.  
@@ -48,3 +59,34 @@ https://reactjs.org/docs/hooks-reference.html#useref
 useRef returns a mutable ref object whose .current property is initialized to the passed argument (initialValue). The returned object will persist for the full lifetime of the component.
 
 Note that useRef() is useful for more than the ref attribute. It’s handy for keeping any mutable value around similar to how you’d use instance fields in classes.
+
+***
+#### useReducer
+https://reactjs.org/docs/hooks-reference.html#usereducer  
+An alternative to `useState`. we first define a reducer function outside the compoents(similer one in Redux).  
+`useReducer` takes in two arguments, first one is the reducer function. second one is the initial state. and returns two elements. first one is the state, second one is the `dispatch` function which we can used to update the state(dispatch actions).
+
+When workign with `useReducer`, react will re-render the component whenever you reducer returns the new state.
+
+***
+#### useContext
+https://reactjs.org/docs/hooks-reference.html#usecontext  
+When we want to pass props throught multiple layers where the middle layer does nothing but passing through.
+For more info, read Docs and also see notes section 7.
+
+***
+#### useMemo
+https://reactjs.org/docs/hooks-reference.html#usememo  
+Performance Optimization, takes in a function and this function should return the value we want to memorize.
+
+***
+#### CustomHooks
+https://reactjs.org/docs/hooks-custom.html  
+Custom hooks allow you to create functionality that can be reused across different components. You can of course just have functions to reuse functionality, but hooks come with the advantage of being able to ‘hook’ into things like component lifecycle and state.  
+Custom Hook will re-run for every render cycle.
+
+
+***
+###### Sidenote
+` props.loading ? <LoadingIndicator /> : null` == ` props.loading && <LoadingIndicator />`
+
