@@ -1,27 +1,31 @@
 # Section5: Styling React Components & Elements
 
-#### Setting styles Dynamically and Class Names Dynamically
+## Setting styles Dynamically and Class Names Dynamically
+
 still using the face all is Javascript, we can use conditon to change the style befor we adding the style to a components. We also can create an array of classname depending the state of our app, and use this classname array to assign className for components
 
-#### Adding and Using Radium
+## Adding and Using Radium
+
 By the limition of inline style in JSX, we can not add hover style to links and buttons, and manymore(all sudo selector, media Queries).  
 We can use an external package <span style="color: blue">radium</span> to solve this. This will allows us to use sudo selector and media queries with inline styling.  
 `npm install --save radium`  
 Remember to wrap your component using Radium `export default Radium(App)`
-A higher order component, adding more functionality to component.  
+A higher order component, adding more functionality to component.
 
-- styling sudo selector(:hover): we using `':hover':{styling}` in the style object
-- Media Queries: in the case we want to add media queries, we need to use a component provided by Radium to wrap our entire application, the `<styleRoot>` element. using `'@media (min-width: 500px)': {width:'450px'}` in the style object
+-   styling sudo selector(:hover): we using `':hover':{styling}` in the style object
+-   Media Queries: in the case we want to add media queries, we need to use a component provided by Radium to wrap our entire application, the `<styleRoot>` element. using `'@media (min-width: 500px)': {width:'450px'}` in the style object
 
-#### Another Library: Styled-Components
+## Another Library: Styled-Components
+
 https://styled-components.com/  
 npm install --save styled-components  
-in order to use styled-components, we first need to 
-`import styled from 'styled-components'`, then the library provided a new component for every HTML tag. div <--> styled.div. We use styled.div\`style\` to style the div tag. In order to apply the style, we need to create a custome HTML element for the styled components. The style we defined here, using pure CSS code. When using sudo-selector, we use an `&` in front of the `:` to identify it's the sudo-selector of this element.  
+in order to use styled-components, we first need to
+`import styled from 'styled-components'`, then the library provided a new component for every HTML tag. div <--> styled.div. We use styled.div\`style\` to style the div tag. In order to apply the style, we need to create a custome HTML element for the styled components. The style we defined here, using pure CSS code. When using sudo-selector, we use an `&` in front of the `:` to identify it's the sudo-selector of this element.
 
-To change style dynamically, we can pass props to the components, and using javascript code inside \`\` to decide which styling to give.  
+To change style dynamically, we can pass props to the components, and using javascript code inside \`\` to decide which styling to give.
 
 person.js
+
 ```JSX
 import React from 'react';
 import styled from 'styled-components'
@@ -52,6 +56,7 @@ const person = (props) => {
 
 export default person;
 ```
+
 App.js
 
 ```JSX
@@ -134,7 +139,7 @@ class App extends Component{
           <p className={classes.join(' ')}>This is really working</p>
           <StyledButton myalt={this.state.showPersons} onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
           {persons}
-        </div> 
+        </div>
     );
   };
 };
@@ -143,7 +148,10 @@ export default App;
 
 ```
 
-#### Working with CSS Modules(Prefer)
+## Working with CSS Modules(Prefer)
+
+More info on React Styles and Assets: <https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/>
+
 Styled-Components is good, but it makes the js file too big since all the css code there. We want to write CSS in .css file and also being able to apply the style to some element, not globally.
-https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/  
+
 for Person.module.css, we can import this file as `import classes from Person.module.css`, when we want to use, just let `className = {classes.Person}`, this will restrice the styling to only the file which import this css file. In the case of change styling dynamically, we can add and remove from the className.

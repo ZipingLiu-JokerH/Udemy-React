@@ -2,16 +2,18 @@
 
 ![section3-1 img](../markdownNotes-img/section3-1.png)
 
-<a href="https://github.com/facebook/create-react-app" target="__blank">Create React apps with no build configuration: Create React App</a>
+Create React apps with no build configuration: Create React App: <https://github.com/facebook/create-react-app>  
+React offical Doc: <https://reactjs.org/docs/getting-started.html>
 
 <span style="color: red; font-size: 17px">Every React Component has to return or render some HTML code which can be rendered to the screen!</span>
 
-#### Understanding JSX
-write "HTML" code inside Javascript  
-Restrictions: 
+## Understanding JSX
 
-- since class is a keyword reserved by JS, we use className
-- when we return, we need all to be in one root element (typically)
+write "HTML" code inside Javascript  
+Restrictions:
+
+-   since class is a keyword reserved by JS, we use className
+-   when we return, we need all to be in one root element (typically)
 
 ```JSX
 class App extends Component{
@@ -19,7 +21,7 @@ class App extends Component{
     return(
      <div className="App">
        <h1>Hi, I'm a React App</h1>
-     </div> 
+     </div>
 
      /*
       The return parts will be translate into
@@ -30,19 +32,23 @@ class App extends Component{
 };
 ```
 
-#### React Components
+## React Components
+
 <span style="color: red">When import component, always use Upper letter to start, this will help react to reconnize</span>
 A component is just a function return JSX
+
 ```JSX
 import React from 'react';
 const person = () => {
     return <p>I'm a Person!</p>
 };
 ```
+
 Daynamic content, the function can take in an argument which will contains all the properties we write at the JSX code. If we use the class-based components, it's in `this.props`  
-To output the content between the opening and closing tage of our custom HTML tage, there is a special `prop` React provided -- `props.children`  
+To output the content between the opening and closing tage of our custom HTML tage, there is a special `prop` React provided -- `props.children`
 
 App.js
+
 ```JSX
 import React, {Component} from 'react';
 import './App.css';
@@ -56,13 +62,14 @@ class App extends Component{
        <Person name="ziping" age="23"/>
        <Person name="Fangyuan" age="25"> I love Food</Person>
        <Person name="HJ" age="24"/>
-     </div> 
+     </div>
     );
   };
 };
 ```
 
 Persons.js
+
 ```JSX
 import React from 'react';
 
@@ -77,12 +84,16 @@ const person = (props) => {
 
 export default person;
 ```
-***
-##### Class-based component: state
+
+---
+
+## Class-based component: state
+
 There is a special property called `state` which is an object, for every class-based components that extends from `Component`. If the state change, React will rerender the object.
 
 <a href="https://reactjs.org/docs/events.html#supported-events" target="__blank">List of event that can be listened by React</a>  
 Using the `setState` method to change the `state`, which takes in an object and it will merge this object to the `state`.
+
 ```JSX
 class App extends Component{
   state = {
@@ -112,14 +123,18 @@ class App extends Component{
        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}> I love Food</Person>
        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-     </div> 
+     </div>
     );
   };
 };
 ```
-***
-##### functional-based components: hooks
-`useState` is the most important react hooks, allow us to manage state from a functional component. Takes in an object and returns an arry with exactly 2 elements. The 1st element will be the current state, 2nd element is a function that allows us to update the state.<span style="color: red">(!This one does not merge the two state objects. it replaces the old one.)</span>
+
+---
+
+## functional-based components: hooks
+
+`useState` is the most important react hooks, allow us to manage state from a functional component. Takes in an object/string/any javascript types and returns an arry with exactly 2 elements. The 1st element will be the current state, 2nd element is a function that allows us to update the state.<span style="color: red">(!This one does not merge the two state objects. it replaces the old one.)</span>
+
 ```JSX
 import React, {useState} from 'react';
 import './App.css';
@@ -152,20 +167,28 @@ const App = props => {
       <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
       <Person name={personsState.persons[1].name} age={personsState.persons[1].age}> I love Food</Person>
       <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
-    </div> 
+    </div>
     );
 };
 ```
-***
-#### Stateless vs Stateful Components
+
+---
+
+## Stateless vs Stateful Components
+
 Stateless(dumb, presentational): no state management  
 Stateful(smart, cotainer): manage state
-***
 
-#### Passing Method References between Components
-we can set a new property which cantains the reference of method, and the other components can access it by using the `props`. In the case we also want to handle arguments to the method, we need to use `bind`  
+---
+
+## Passing Method References between Components
+
+we can set a new property which cantains the reference of method, and the other components can access it by using the `props`. In the case we also want to handle arguments to the method, we need to use `bind` to create a new function where the argument is preset. Or we can use another method `click = {() => this.switchNameHandler('ZIPING LIU')}`. Notice Here if we are using `bind` we are not purposely trying to set the `this`, we simply want to use the fact that `bind` returns a new function with preset arguments. The `this` keyword reference is handled by the method we defined in the `APP` component, we are using arrow function to define these method. Not using the ES5 way: `changeName = function(){...}`
+
+In the case of passing parameter, using `bind` is more effecient than using arrow function
 
 App.js
+
 ```JSX
 class App extends Component{
   state = {
@@ -203,25 +226,30 @@ class App extends Component{
      <div className="App">
        <h1>Hi, I'm a React App</h1>
        <button onClick={this.switchNameHandler.bind(this, 'ziping liu')}>Switch name</button>
-       <Person 
-       name={this.state.persons[0].name} 
+       <Person
+       name={this.state.persons[0].name}
        age={this.state.persons[0].age}/>
-       
-       <Person 
-       name={this.state.persons[1].name} 
+
+       <Person
+       name={this.state.persons[1].name}
        age={this.state.persons[1].age}
-       click={this.switchNameHandler.bind(this, 'ZIPING LIU')}> I love Food</Person>
-       
-       <Person 
-       name={this.state.persons[2].name} 
+       click={this.switchNameHandler.bind(this, 'ZIPING LIU')}
+       >
+       I love Food
+       </Person>
+
+       <Person
+       name={this.state.persons[2].name}
        age={this.state.persons[2].age}
        change={this.changeName}/>
-     </div> 
+     </div>
     );
   };
 };
 ```
+
 Persons.js
+
 ```JSX
 const person = (props) => {
     return (
@@ -233,15 +261,19 @@ const person = (props) => {
     );
 };
 ```
-***
-#### Styling
 
-- external
-    + Notice: since we are using webpack. every CSS code we write is Global.
-    + Remember to import and css file need the `.css` extension
-- inline
-    + the style scope will be restricted
-    + but the CSS functionality will be limited(later we will learn how to go around this)
+---
+
+## Styling
+
+-   external
+    -   Notice: since we are using webpack. every CSS code we write is Global.
+    -   Remember to import and css file need the `.css` extension
+-   inline
+
+    -   the style scope will be restricted
+    -   but the CSS functionality will be limited(later we will learn how to go around this)
+
     ```JSX
 
     render(){
@@ -256,21 +288,22 @@ const person = (props) => {
 
         return(
          <div className="App">
-           <button 
+           <button
            style = {style}
            onClick={this.switchNameHandler.bind(this, 'ziping liu')}>
            Switch name</button>
-           
-           <Person 
-           name={this.state.persons[0].name} 
+
+           <Person
+           name={this.state.persons[0].name}
            age={this.state.persons[0].age}/>
-         </div> 
+         </div>
         );
       };
     ```
- 
-***
+
+---
+
 Usefull links
-Introducing JSX: https://reactjs.org/docs/introducing-jsx.html  
-Rendering Elements: https://reactjs.org/docs/rendering-elements.html  
-Components & Props: https://reactjs.org/docs/components-and-props.html  
+Introducing JSX: <https://reactjs.org/docs/introducing-jsx.html>  
+Rendering Elements: <https://reactjs.org/docs/rendering-elements.html>  
+Components & Props: <https://reactjs.org/docs/components-and-props.html>
